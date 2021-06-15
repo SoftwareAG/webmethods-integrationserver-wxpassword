@@ -28,7 +28,7 @@ public class PasswordSetter {
 
 	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	static SecureRandom rnd = new SecureRandom();
-	
+
 	File workDir = null;
 	String userName = null;
 	String password = null;
@@ -60,9 +60,11 @@ public class PasswordSetter {
 			// an IO issue
 			if (!isPasswordDefinedByEnvVar) {
 				Files.write(fileWithPlainTextPassword(), password.getBytes());
+				System.out.println("New password for user '" + userName + "' can be found at '"
+						+ fileWithPlainTextPassword().getCanonicalPath() + "'");
 			}
 			user.setPassword(password);
-//			user.setPasswordUpdatedOn();
+			user.setPasswordUpdatedOn();
 		}
 	}
 
