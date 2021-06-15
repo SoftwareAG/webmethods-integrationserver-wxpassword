@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">wx.password.pub</value>
+  <value name="is_public">false</value>
+  <value name="encodeutf8">true</value>
+  <value name="shared">CnByaXZhdGUgZW51bSBEZWZhdWx0VXNlciB7IEFkbWluaXN0cmF0b3IsIFJlcGxpY2F0b3IsIERl
+dmVsb3BlciB9CgoJ</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>com.wm.app.b2b.server.User</value>
+    <value>com.wm.app.b2b.server.UserManager</value>
+    <value>com.wm.app.b2b.server.ServerAPI</value>
+    <value>java.io.File</value>
+    <value>java.io.IOException</value>
+    <value>java.security.SecureRandom</value>
+    <value>java.util.Iterator</value>
+    <value>com.softwareag.wx.is.password.PasswordSetter</value>
+    <value>com.softwareag.wx.is.password.WorkDir</value>
+  </array>
+</Values>
