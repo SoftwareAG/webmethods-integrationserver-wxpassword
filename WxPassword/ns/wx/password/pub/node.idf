@@ -6,8 +6,7 @@
   <value name="node_nsName">wx.password.pub</value>
   <value name="is_public">false</value>
   <value name="encodeutf8">true</value>
-  <value name="shared">CnByaXZhdGUgZW51bSBEZWZhdWx0VXNlciB7IEFkbWluaXN0cmF0b3IsIFJlcGxpY2F0b3IsIERl
-dmVsb3BlciB9CgoJ</value>
+  <value name="shared">Cgk=</value>
   <value name="extends"></value>
   <array name="implements" type="value" depth="1">
   </array>
@@ -19,7 +18,6 @@ dmVsb3BlciB9CgoJ</value>
     <value>java.io.IOException</value>
     <value>java.security.SecureRandom</value>
     <value>java.util.Iterator</value>
-    <value>com.softwareag.wx.is.password.PasswordSetter</value>
-    <value>com.softwareag.wx.is.password.WorkDir</value>
+    <value>com.softwareag.wx.is.password.DefaultAccountUpdater</value>
   </array>
 </Values>

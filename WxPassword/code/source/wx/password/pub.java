@@ -14,8 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Iterator;
-import com.softwareag.wx.is.password.PasswordSetter;
-import com.softwareag.wx.is.password.WorkDir;
+import com.softwareag.wx.is.password.DefaultAccountUpdater;
 // --- <<IS-END-IMPORTS>> ---
 
 public final class pub
@@ -39,18 +38,7 @@ public final class pub
 	{
 		// --- <<IS-START(nonDefaultPasswordsForStandardAccounts)>> ---
 		// @sigtype java 3.5
-		WorkDir workDir = new WorkDir();
-		File workDirFile = workDir.get();
-			
-		for (DefaultUser defaultUser : DefaultUser.values()) {
-			String userName = defaultUser.toString();
-			PasswordSetter pws = new PasswordSetter(workDirFile, userName);
-			try {
-				pws.execute();
-			} catch (IOException e) {
-				throw new ServiceException(e);
-			}
-		}
+		DefaultAccountUpdater.execute();
 			
 		// --- <<IS-END>> ---
 
@@ -58,10 +46,8 @@ public final class pub
 	}
 
 	// --- <<IS-START-SHARED>> ---
+
 	
-	private enum DefaultUser { Administrator, Replicator, Developer }
-	
-		
 	// --- <<IS-END-SHARED>> ---
 }
 

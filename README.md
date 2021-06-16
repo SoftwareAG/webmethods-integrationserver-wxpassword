@@ -6,9 +6,11 @@ in a container.
 
 ## Usage
 
-Installing the package is all that needs to be done. The service 
-`wx.password.pub:nonDefaultPasswordsForStandardAccounts` is defined 
-as a start-up service and therefore gets executed automatically.
+To enable the automated update of passwords the environment variable
+`SAG_WXPASSWORD_UPDATE_DEFAULT_ACCOUNTS` must be set to `true`.
+This mechanism protects against accidental execution and by that
+a potential lock-out.
+
 
 ### Specific passwords
 
@@ -19,7 +21,7 @@ the variable `SAG_WXPASSWORD_SET_Administrator` must be defined.
 
 ### Random passwords
 
-If no password is defined a random one will be generated and saved in 
+If no password is defined, a random one will be generated and saved in 
 clear text in the working directory. For each user a separate file will 
 be created and its name matches the user name.
 
@@ -33,12 +35,6 @@ The working directory needs to be provided as an environment variable
 is `$IS_HOME/config/WxPassword`. In both cases, the directory will
 be created, if it does not exist. If the creation fails, a
 `ServiceException` is thrown and now further activities performed.
-
-### Disable execution
-
-To disable the execution from the outside you need to create a semaphore 
-file (name: `disable_WxPassword`) in the working directory. If this is
-found, WxPassword will effectively be completely disabled.
 
 ## Getting Started
 

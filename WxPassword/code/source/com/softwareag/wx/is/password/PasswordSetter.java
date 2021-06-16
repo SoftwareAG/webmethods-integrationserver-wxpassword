@@ -24,15 +24,10 @@ public class PasswordSetter {
 	public static final String ENVVAR_PASSWORD_PREFIX = "SAG_WXPASSWORD_SET_";
 
 	/**
-	 * Name of semaphore file to indicate that password should not be updated. The
-	 * existence of this file disables any changes, regardless of whether the
-	 * passwords are specified as environment variables or should be created
-	 * randomly.
+	 * Set of characters from which the random password is generated 
 	 */
-	public static final String SEMAPHOR_DISABLE = "disable_WxPassword";
-
-	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	static SecureRandom rnd = new SecureRandom();
+	private static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	private static SecureRandom rnd = new SecureRandom();
 
 	File workDir = null;
 	String userName = null;
@@ -66,7 +61,7 @@ public class PasswordSetter {
 			// an IO issue
 			if (!isPasswordDefinedByEnvVar) {
 				Files.write(fileWithPlainTextPassword(), password.getBytes());
-				System.out.println("New password for user '" + userName + "' can be found at '"
+				System.out.println("WxPassword : New password for user '" + userName + "' can be found at '"
 						+ fileWithPlainTextPassword().getCanonicalPath() + "'");
 			}
 
