@@ -1,6 +1,7 @@
 # WxPassword
 
-Initial functionality is to change the passwords of the built-in users 
+Initial functionality is to change the passwords of the built-in users of
+webMethods Integration Server
 (Administrator, Replicator, Developer). The primary use-case is deployment 
 in a container.
 
@@ -21,9 +22,9 @@ the variable `SAG_WXPASSWORD_SET_Administrator` must be defined.
 
 ### Random passwords
 
-If no password is defined, a random one will be generated and saved in 
-clear text in the working directory. For each user a separate file will 
-be created and its name matches the user name.
+If no password is defined via environment variable, a random one will 
+be generated and saved in clear text in the working directory. For 
+each user a separate file will be created and its name matches the user name.
 
 **Intended only for
 non-production environments!**
