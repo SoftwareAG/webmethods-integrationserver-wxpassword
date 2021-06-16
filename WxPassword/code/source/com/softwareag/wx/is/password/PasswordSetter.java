@@ -4,8 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 
+import com.wm.app.b2b.server.Service;
+import com.wm.app.b2b.server.ServiceException;
 import com.wm.app.b2b.server.User;
 import com.wm.app.b2b.server.UserManager;
+import com.wm.data.IData;
+import com.wm.data.IDataFactory;
+import com.wm.lang.ns.NSName;
 import com.wm.util.Files;
 
 /**
@@ -50,10 +55,11 @@ public class PasswordSetter {
 	 * Perform the password update, if needed
 	 * 
 	 * @throws IOException
+	 * @throws ServiceException 
 	 */
-	public void execute() throws IOException {
+	public void execute() throws IOException, ServiceException {
 		if (isActionNeeded()) {
-			User user = UserManager.getUser(userName);
+			// Get password from envVar or random generator
 			String password = getPassword();
 
 			// New random password is written before it gets applied to avoid loosing it by
@@ -63,8 +69,16 @@ public class PasswordSetter {
 				System.out.println("New password for user '" + userName + "' can be found at '"
 						+ fileWithPlainTextPassword().getCanonicalPath() + "'");
 			}
-			user.setPassword(password);
-			user.setPasswordUpdatedOn();
+
+			// Perform password update
+			IData svcInput = IDataFactory.create(new Object[][] { { "username", userName }, { "password", password } });
+			try {
+				Service.doInvoke(NSName.create("wm.server.access:userUpdate"), svcInput);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new ServiceException(e);
+			}
+
 		}
 	}
 
